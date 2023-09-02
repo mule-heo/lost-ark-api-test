@@ -22,9 +22,11 @@ API의 소유권 및 모든 권한은 Smilegate RPG 사에 있습니다. 이 페
 
 ## 프로젝트 추진 배경
 
-API 문서에서 제공하는 정보는 API를 활용하고자 하는 이용자에게 요청 방법, 응답 본문 등 충분한 정보를 제공하고 있습니다. 하지만 이미지 파일의 링크와 같은 내용도 전부 문자열로만 제공되는 것을 보면서 이러한 내용은 미리보기를 제공하는 등 시각화해 보면 어떨까? 하는 생각에서 프로젝트를 기획하였습니다.
+- API 문서에서 제공하는 정보는 API를 활용하고자 하는 이용자에게 요청 방법, 응답 본문 등 충분한 정보를 제공
+- 하지만 이미지 파일의 링크와 같은 내용도 전부 문자열로만 제공되는 것을 확인
+- 이미지 링크와 같은 데이터는 미리보기를 제공하는 등 시각화해 보면 어떨까? 하는 생각에서 프로젝트를 기획
 
-또한, 향후 해당 API를 활용할 계획이 있어 해당 API가 어떠한 데이터를 제공하는지 숙지하고 이것을 효과적으로 표현하는 기회로 삼고자 합니다.
+- 추가로 향후 해당 API를 활용할 계획이 있어 해당 API가 어떠한 데이터를 제공하는지 숙지하는 기회로 활용
 
 <br>
 
@@ -38,13 +40,13 @@ API 문서에서 제공하는 정보는 API를 활용하고자 하는 이용자�
 
 ### 프로젝트 목표
 
-- 이미지 url과 같은 string 타입의 데이터는 미리보기를 제공하는 식으로 시각화함으로써 응답 데이터를 사용자 친화적으로 표현합니다.
-- 추후 관련 프로젝트 진행 시 재사용할 수 있는 컴포넌트를 구현합니다.
+- 이미지 url과 같은 string 타입의 데이터는 미리보기를 제공하는 식으로 시각화함으로써 응답 데이터를 사용자 친화적으로 표현
+- 추후 관련 프로젝트 진행 시 재사용할 수 있는 컴포넌트를 구현
 
 ### 개인 목표
 
-- 타입스크립트 타입 활용을 숙달합니다.
-- API 데이터 처리를 숙달합니다.
+- 타입스크립트 타입 활용 숙달
+- API 데이터 처리 숙달
 
 <br>
 
@@ -70,15 +72,93 @@ API 문서에서 제공하는 정보는 API를 활용하고자 하는 이용자�
 
 ### dependencies
 
-|react|react-router-dom|styled-components|
-|------|---|---|
-|<img src="https://techstack-generator.vercel.app/react-icon.svg" alt="icon" width="65" height="65" />|<img src="https://github.com/mule-heo/lost-ark-api-test/assets/83588163/075ebb1a-e0f9-42a4-8c4b-aadb8f4d98cf" alt="icon" width="65" height="65" />|<img src="https://github.com/mule-heo/lost-ark-api-test/assets/83588163/1062438a-5b94-4a32-93c9-55b4da07c1f2" alt="icon" width="65" height="65" />|
+<table>
+<tr>
+<th align="center">
+<img width="150" height="1">
+<p> 
+react
+</p>
+</th>
+<th align="center">
+<img width="150" height="1">
+<p> 
+react-router-dom
+</p>
+</th>
+<th align="center">
+<img width="150" height="1">
+<p> 
+styled-components
+</p>
+</th>
+<th align="center">
+<img width="150" height="1">
+<p> 
+axios
+</p>
+</th>
+<th align="center">
+<img width="150" height="1">
+<p> 
+react-query
+</p>
+</th>
+</tr>
+<tr>
+<td align="center">
+<img src="https://techstack-generator.vercel.app/react-icon.svg" alt="icon" width="65" height="65" />
+</td>
+<td align="center">
+<img src="https://github.com/mule-heo/lost-ark-api-test/assets/83588163/1062438a-5b94-4a32-93c9-55b4da07c1f2" alt="icon" width="65" height="65" />
+</td>
+<td align="center">
+<img src="https://github.com/mule-heo/lost-ark-api-test/assets/83588163/97f0eb0a-0cfe-47bd-870c-0df8f601de0b" alt="icon" color="white" width="65" height="65" />
+</td>
+<td align="center">
+<img src="https://github.com/mule-heo/lost-ark-api-test/assets/83588163/bebf624a-f47e-48ab-b7b1-43b1a362837c" alt="icon" color="white" width="65" height="65" />
+</td>
+<td align="center">
+<img src="https://github.com/mule-heo/lost-ark-api-test/assets/83588163/49d687a4-dc84-40a9-930c-b86cd0938267" alt="icon" color="white" width="65" height="65" />
+</td>
+</tr>
+</table>
 
 ### dev-dependencies
 
-|typescript|eslint|prettier|
-|------|---|---|
-|<img src="https://techstack-generator.vercel.app/ts-icon.svg" alt="icon" width="65" height="65" />|<img src="https://techstack-generator.vercel.app/eslint-icon.svg" alt="icon" width="65" height="65" />|<img src="https://techstack-generator.vercel.app/prettier-icon.svg" alt="icon" width="65" height="65" />|
+<table>
+<tr>
+<th align="center">
+<img width="150" height="1">
+<p> 
+typescript
+</p>
+</th>
+<th align="center">
+<img width="150" height="1">
+<p> 
+eslint
+</p>
+</th>
+<th align="center">
+<img width="150" height="1">
+<p> 
+prettier
+</p>
+</th>
+</tr>
+<tr>
+<td align="center">
+<img src="https://techstack-generator.vercel.app/ts-icon.svg" alt="icon" width="65" height="65" />
+</td>
+<td align="center">
+<img src="https://techstack-generator.vercel.app/eslint-icon.svg" alt="icon" width="65" height="65" />
+</td>
+<td align="center">
+<img src="https://techstack-generator.vercel.app/prettier-icon.svg" alt="icon" width="65" height="65" />
+</td>
+</tr>
+</table>
 
 <br>
 
