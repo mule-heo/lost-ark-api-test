@@ -11,5 +11,7 @@ jobs:
           node-version: '14'
       - name: npm install
         run: npm install
+        working-directory: "./client"
       - name: execute test
         run: npm run test
+        working-directory: "./client"
