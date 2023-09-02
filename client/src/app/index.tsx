@@ -1,16 +1,17 @@
 import "./index.css";
+import { Outlet } from "react-router-dom";
 
-function App() {
+function Root() {
   return (
     <>
       <header></header>
       <section>
         <aside></aside>
-        <main></main>
+        <Outlet />
       </section>
       <footer></footer>
     </>
   );
 }
 
-export default App;
+export default Root;
