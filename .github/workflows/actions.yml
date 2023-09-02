@@ -1,0 +1,15 @@
+name: run-test-cases
+run-name: Test
+on: [push]
+jobs:
+  test-todo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - name: npm install
+        run: npm install
+      - name: execute test
+        run: npm run test
