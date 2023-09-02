@@ -1,0 +1,15 @@
+:root {
+  --area-dark-color: "#181A1E";
+  --background-main-color: "#212225";
+  --background-sub-color: "#2C2F36";
+  --neutral-color: "#18BAFE";
+  --success-color: "#1DEAC6";
+  --warning-color: "#C24100";
+  --warning-hover-color: "#FA5000";
+  --bright-menu-color: "#989AA0";
+  --bright-menu-contrast-color: "#A3B4D8";
+  --font-black-color: "#000";
+  --font-white-color: "#FFF";
+  --font-mid-color: "#727272";
+  --font-light-color: "#B4B4B4";
+}
