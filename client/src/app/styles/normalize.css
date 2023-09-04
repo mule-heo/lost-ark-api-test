@@ -12,6 +12,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  background-color: var(--background-main-color);
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
