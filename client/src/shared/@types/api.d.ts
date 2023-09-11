@@ -23,3 +23,18 @@ interface Event {
   EndDate: string; // ISO 형식으로 표시된 데이터
   RewardDate: string | null; // 이벤트 종료 이후 보상 수령 가능 기간
 }
+
+// Characters
+
+interface SiblingsReq {
+  characterName: string;
+}
+
+interface CharacterInfo {
+  ServerName: string;
+  CharacterName: string;
+  CharacterLevel: number;
+  CharacterClassName: string;
+  ItemAvgLevel: string; // string 주의
+  ItemMaxLevel: string; // string 주의
+}
