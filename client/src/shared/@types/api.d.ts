@@ -431,3 +431,32 @@ type AuctionItemOptionType =
   | "GEM_SKILL_DAMAGE"
   | "GEM_SKILL_DAMAGE_IDENTITY"
   | "BRACELET_RANDOM_SLOT";
+
+// Guilds
+
+type ServerName =
+  | "루페온"
+  | "실리안"
+  | "아만"
+  | "카마인"
+  | "카제로스"
+  | "아브렐슈드"
+  | "카단"
+  | "니나브";
+
+interface guildRankingsReq {
+  serverName: ServerName;
+}
+
+// body 자체가 아래 인터페이스를 요소로 하는 배열
+
+interface GuildRanking {
+  Rank: number;
+  GuildName: string;
+  GuildMessage: string;
+  MasterName: string;
+  Rating: number;
+  MemberCount: number;
+  MaxMemberCount: number;
+  UpdatedDated: string;
+}
