@@ -1,8 +1,82 @@
 // TODO: null 가능 여부 확인해서 타입 변경하기
 
-// News
-
 type NoticeType = "공지" | "점검" | "상점" | "이벤트";
+
+// 직업 추가 시 업데이트
+type Classes =
+  | "버서커"
+  | "디스트로이어"
+  | "워로드"
+  | "홀리나이트"
+  | "슬레이어"
+  | "아르카나"
+  | "서머너"
+  | "바드"
+  | "소서리스"
+  | "배틀마스터"
+  | "인파이터"
+  | "기공사"
+  | "창술사"
+  | "스트라이커"
+  | "블레이드"
+  | "데모닉"
+  | "리퍼"
+  | "소울이터"
+  | "호크아이"
+  | "데빌헌터"
+  | "블래스터"
+  | "스카우터"
+  | "건슬링어"
+  | "도화가"
+  | "기상술사";
+
+type ItemGrades =
+  | "일반"
+  | "고급"
+  | "희귀"
+  | "영웅"
+  | "전설"
+  | "유물"
+  | "고대"
+  | "에스더";
+
+// 4티어 추가 시 업데이트
+type ItemTiers = 1 | 2 | 3;
+
+// 거래소, 경매장 정렬 관련
+type Sort =
+  | "BIDSTART_PRICE"
+  | "BUY_PRICE"
+  | "EXPIREDATE"
+  | "ITEM_GRADE"
+  | "ITEM_LEVEL"
+  | "ITEM_QUALITY";
+
+type SortCondition = "ASC" | "DESC";
+
+type AuctionItemOptionType =
+  | "None"
+  | "SKILL"
+  | "STAT"
+  | "ABILITY_ENGRAVE"
+  | "BRACELET_SPECIAL_EFFECTS"
+  | "GEM_SKILL_COOLDOWN_REDUCTION"
+  | "GEM_SKILL_COOLDOWN_REDUCTION_IDENTITY"
+  | "GEM_SKILL_DAMAGE"
+  | "GEM_SKILL_DAMAGE_IDENTITY"
+  | "BRACELET_RANDOM_SLOT";
+
+type ServerName =
+  | "루페온"
+  | "실리안"
+  | "아만"
+  | "카마인"
+  | "카제로스"
+  | "아브렐슈드"
+  | "카단"
+  | "니나브";
+
+// News
 
 /** 파라미터 생략 시 필터링없이 전체 검색됩니다. */
 interface NoticesReq {
@@ -33,7 +107,7 @@ interface SiblingsReq {
 }
 
 interface CharacterInfo {
-  ServerName: string;
+  ServerName: ServerName;
   CharacterName: string;
   CharacterLevel: number;
   CharacterClassName: string;
@@ -61,11 +135,11 @@ interface ArmoryProfile {
   CharacterImage: string;
   ExpeditionLevel: number;
   PvpGradeName: string;
-  TownLevel: number;
-  TownName: string | null;
-  Title: string | null;
-  GuildMemberGrade: string | null;
-  GuildName: string | null;
+  TownLevel: number | null;
+  TownName: string;
+  Title: string;
+  GuildMemberGrade: string;
+  GuildName: string;
   UsingSkillPoint: number;
   TotalSkillPoint: number;
   Stats: Stat[];
@@ -105,6 +179,7 @@ interface ArmoryAvatar {
   IsInner: boolean;
   Tooltip: string; // HTML 형식
 }
+
 interface ArmorySkill {
   Name: string;
   Icon: string;
@@ -269,46 +344,9 @@ interface Options {
   SkillOptions: SkillOption[]; // 이 부분이 응답의 대부분을 차지함(2만 줄)
   EtcOptions: EtcOption[];
   Categories: Category[];
-  // 고정 옵션이므로 튜플 타입으로 지정
-  // TODO: 나중에 다른 인터페이스와 호환될 수 있게 타입을 따로 지정하는 방법 모색
-  ItemGrades: [
-    "일반",
-    "고급",
-    "희귀",
-    "영웅",
-    "전설",
-    "유물",
-    "고대",
-    "에스더",
-  ];
-  ItemTiers: [1, 2, 3];
-  Classes: [
-    "버서커",
-    "디스트로이어",
-    "워로드",
-    "홀리나이트",
-    "슬레이어",
-    "아르카나",
-    "서머너",
-    "바드",
-    "소서리스",
-    "배틀마스터",
-    "인파이터",
-    "기공사",
-    "창술사",
-    "스트라이커",
-    "블레이드",
-    "데모닉",
-    "리퍼",
-    "소울이터",
-    "호크아이",
-    "데빌헌터",
-    "블래스터",
-    "스카우터",
-    "건슬링어",
-    "도화가",
-    "기상술사",
-  ];
+  ItemGrades: ItemGrades[];
+  ItemTiers: ItemTiers[];
+  Classes: Classes[];
 }
 
 interface SkillOption {
@@ -348,38 +386,27 @@ interface CategoryItem {
   CodeName: string;
 }
 
-type Sort =
-  | "BIDSTART_PRICE"
-  | "BUY_PRICE"
-  | "EXPIREDATE"
-  | "ITEM_GRADE"
-  | "ITEM_LEVEL"
-  | "ITEM_QUALITY";
-
-type SortCondition = "ASC" | "DESC";
-
 interface SearchDetailOption {
   FirstOption: number | null;
   SecondOption: number | null;
   MinValue: number | null;
   MaxValue: number | null;
 }
-interface ItemsReq {
-  requestAuctionItems: {
-    ItemLevelMin: number;
-    ItemLevelMax: number;
-    ItemGradeQuality: number | null;
-    SkillOptions: SearchDetailOption[];
-    EtcOptions: SearchDetailOption[];
-    Sort: Sort;
-    CategoryCode: number;
-    CharacterClass: string;
-    ItemTier: 1 | 2 | 3 | null;
-    ItemGrade: string;
-    ItemName: string;
-    PageNo: number;
-    SortCondition: SortCondition;
-  };
+
+interface AuctionItemsReq {
+  ItemLevelMin: number;
+  ItemLevelMax: number;
+  ItemGradeQuality: number | null;
+  SkillOptions: SearchDetailOption[];
+  EtcOptions: SearchDetailOption[];
+  Sort: Sort;
+  CategoryCode: number;
+  CharacterClass: string;
+  ItemTier: ItemTiers | null;
+  ItemGrade: ItemGrades;
+  ItemName: string;
+  PageNo: number;
+  SortCondition: SortCondition;
 }
 
 interface Auction {
@@ -420,29 +447,7 @@ interface AuctionItemOption {
   ClassName: string;
 }
 
-type AuctionItemOptionType =
-  | "None"
-  | "SKILL"
-  | "STAT"
-  | "ABILITY_ENGRAVE"
-  | "BRACELET_SPECIAL_EFFECTS"
-  | "GEM_SKILL_COOLDOWN_REDUCTION"
-  | "GEM_SKILL_COOLDOWN_REDUCTION_IDENTITY"
-  | "GEM_SKILL_DAMAGE"
-  | "GEM_SKILL_DAMAGE_IDENTITY"
-  | "BRACELET_RANDOM_SLOT";
-
 // Guilds
-
-type ServerName =
-  | "루페온"
-  | "실리안"
-  | "아만"
-  | "카마인"
-  | "카제로스"
-  | "아브렐슈드"
-  | "카단"
-  | "니나브";
 
 interface guildRankingsReq {
   serverName: ServerName;
@@ -465,48 +470,19 @@ interface GuildRanking {
 
 interface Markets {
   Categories: Category[];
-  ItemGrades: [
-    "일반",
-    "고급",
-    "희귀",
-    "영웅",
-    "전설",
-    "유물",
-    "고대",
-    "에스더",
-  ];
-  ItemTiers: [1, 2, 3];
-  Classes: [
-    "버서커",
-    "디스트로이어",
-    "워로드",
-    "홀리나이트",
-    "슬레이어",
-    "아르카나",
-    "서머너",
-    "바드",
-    "소서리스",
-    "배틀마스터",
-    "인파이터",
-    "기공사",
-    "창술사",
-    "스트라이커",
-    "블레이드",
-    "데모닉",
-    "리퍼",
-    "소울이터",
-  ];
+  ItemGrades: ItemGrades[];
+  ItemTiers: ItemTiers[];
+  Classes: Classes[];
 }
 
 interface MarketItemReq {
   itemId: number;
 }
 
-// TODO: 아이템 id 얻어서 요청해 보고 업데이트하기
 interface MarketItem {
   Name: string;
   TradeRemainCount: number | null;
-  BundleCount: number; // ?
+  BundleCount: number; // 구매 단위 (1개 10개 100개)
   Stats: MarketItemStat[];
   ToolTip: string;
 }
@@ -517,15 +493,12 @@ interface MarketItemStat {
   TradeCount: number;
 }
 
-// MarketItemReq - id - item 일대일 매칭
-// MarketItemsReq - 조건을 만족하는 모든 item 검색
-
 interface MarketItemsReq {
   Sort: "GRADE" | "YDAY_AVG_PRICE" | "RECENT_PRICE" | "CURRENT_MIN_PRICE";
   CategoryCode: number;
-  CharacterClass: string;
-  ItemTier: number | null;
-  ItemGrade: string;
+  CharacterClass: Classes;
+  ItemTier: ItemTiers | null;
+  ItemGrade: ItemGrades;
   ItemName: string;
   PageNo: number;
   SortCondition: SortCondition;
@@ -572,16 +545,16 @@ interface RewardItem {
 }
 
 interface ChallengeGuardianRaids {
-  Raids: Raid[];
+  Raids: GuardianRaid[];
   RewardItems: RaidRewardItem[]; // 어비스 던전과 달리 레벨 구간대별로 보상이 다름 + 1580 구간대 반영이 안 되어 있음
 }
 
-interface Raid {
+interface GuardianRaid {
   Name: string;
   Description: string;
   MinCharacterLevel: number;
   MinItemLevel: number;
-  RequiredClearRaid: null;
+  RequiredClearRaid: string;
   StartTime: string;
   EndTime: string;
   Image: string;
