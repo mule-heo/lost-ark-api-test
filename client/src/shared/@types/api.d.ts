@@ -460,3 +460,92 @@ interface GuildRanking {
   MaxMemberCount: number;
   UpdatedDated: string;
 }
+
+// Markets
+
+interface Markets {
+  Categories: Category[];
+  ItemGrades: [
+    "일반",
+    "고급",
+    "희귀",
+    "영웅",
+    "전설",
+    "유물",
+    "고대",
+    "에스더",
+  ];
+  ItemTiers: [1, 2, 3];
+  Classes: [
+    "버서커",
+    "디스트로이어",
+    "워로드",
+    "홀리나이트",
+    "슬레이어",
+    "아르카나",
+    "서머너",
+    "바드",
+    "소서리스",
+    "배틀마스터",
+    "인파이터",
+    "기공사",
+    "창술사",
+    "스트라이커",
+    "블레이드",
+    "데모닉",
+    "리퍼",
+    "소울이터",
+  ];
+}
+
+interface MarketItemReq {
+  itemId: number;
+}
+
+// TODO: 아이템 id 얻어서 요청해 보고 업데이트하기
+interface MarketItem {
+  Name: string;
+  TradeRemainCount: number | null;
+  BundleCount: number; // ?
+  Stats: MarketItemStat[];
+  ToolTip: string;
+}
+
+interface MarketItemStat {
+  Date: string;
+  AvgPrice: number;
+  TradeCount: number;
+}
+
+// MarketItemReq - id - item 일대일 매칭
+// MarketItemsReq - 조건을 만족하는 모든 item 검색
+
+interface MarketItemsReq {
+  Sort: "GRADE" | "YDAY_AVG_PRICE" | "RECENT_PRICE" | "CURRENT_MIN_PRICE";
+  CategoryCode: number;
+  CharacterClass: string;
+  ItemTier: number | null;
+  ItemGrade: string;
+  ItemName: string;
+  PageNo: number;
+  SortCondition: SortCondition;
+}
+
+interface MarketList {
+  PageNo: number;
+  PageSize: number;
+  TotalCount: number;
+  Items: MarketItem[];
+}
+
+interface MarketItem {
+  Id: number;
+  Name: string;
+  Grade: string;
+  Icon: string;
+  BundleCount: number;
+  TradeRemainCount: number | null;
+  YDayAvgPrice: number;
+  RecentPrice: number;
+  CurrentMinPrice: number;
+}
