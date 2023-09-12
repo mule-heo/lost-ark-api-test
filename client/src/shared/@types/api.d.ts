@@ -1,3 +1,5 @@
+// TODO: null 가능 여부 확인해서 타입 변경하기
+
 // News
 
 type NoticeType = "공지" | "점검" | "상점" | "이벤트";
@@ -258,3 +260,174 @@ interface CollectiblePoint {
   Point: number;
   MaxPoint: number;
 }
+
+// Auctions
+
+interface Options {
+  MaxItemLevel: number;
+  ItemGradeQualities: number[]; // 10 이상 90 이하 10 단위 증가
+  SkillOptions: SkillOption[]; // 이 부분이 응답의 대부분을 차지함(2만 줄)
+  EtcOptions: EtcOption[];
+  Categories: Category[];
+  // 고정 옵션이므로 튜플 타입으로 지정
+  // TODO: 나중에 다른 인터페이스와 호환될 수 있게 타입을 따로 지정하는 방법 모색
+  ItemGrades: [
+    "일반",
+    "고급",
+    "희귀",
+    "영웅",
+    "전설",
+    "유물",
+    "고대",
+    "에스더",
+  ];
+  ItemTiers: [1, 2, 3];
+  Classes: [
+    "버서커",
+    "디스트로이어",
+    "워로드",
+    "홀리나이트",
+    "슬레이어",
+    "아르카나",
+    "서머너",
+    "바드",
+    "소서리스",
+    "배틀마스터",
+    "인파이터",
+    "기공사",
+    "창술사",
+    "스트라이커",
+    "블레이드",
+    "데모닉",
+    "리퍼",
+    "소울이터",
+    "호크아이",
+    "데빌헌터",
+    "블래스터",
+    "스카우터",
+    "건슬링어",
+    "도화가",
+    "기상술사",
+  ];
+}
+
+interface SkillOption {
+  Value: number;
+  Class: string;
+  Text: string;
+  IsSkillGroup: boolean; // 아이덴티티 기술 여부로 보임
+  Tripods: Tripod[];
+}
+
+interface Tripod {
+  Value: number;
+  Text: string;
+  IsGem: boolean;
+}
+
+interface EtcOption {
+  Value: number;
+  Text: string;
+  EtcSubs: EtcSub[];
+}
+
+interface EtcSub {
+  Value: number;
+  Text: string;
+  Class: string; // 빈 문자열이면 공용, 값이 있으면 특정 직업 전용
+}
+
+interface Category {
+  Subs: CategoryItem[]; // 카테고리의 하위 분류
+  Code: number;
+  CodeName: string;
+}
+
+interface CategoryItem {
+  Code: number;
+  CodeName: string;
+}
+
+type Sort =
+  | "BIDSTART_PRICE"
+  | "BUY_PRICE"
+  | "EXPIREDATE"
+  | "ITEM_GRADE"
+  | "ITEM_LEVEL"
+  | "ITEM_QUALITY";
+
+type SortCondition = "ASC" | "DESC";
+
+interface SearchDetailOption {
+  FirstOption: number | null;
+  SecondOption: number | null;
+  MinValue: number | null;
+  MaxValue: number | null;
+}
+interface ItemsReq {
+  requestAuctionItems: {
+    ItemLevelMin: number;
+    ItemLevelMax: number;
+    ItemGradeQuality: number | null;
+    SkillOptions: SearchDetailOption[];
+    EtcOptions: SearchDetailOption[];
+    Sort: Sort;
+    CategoryCode: number;
+    CharacterClass: string;
+    ItemTier: 1 | 2 | 3 | null;
+    ItemGrade: string;
+    ItemName: string;
+    PageNo: number;
+    SortCondition: SortCondition;
+  };
+}
+
+interface Auction {
+  PageNo: number;
+  PageSize: number;
+  TotalCount: number;
+  Items: AuctionItem[];
+}
+
+interface AuctionItem {
+  Name: string;
+  Grade: string;
+  Tier: number;
+  Level: number | null;
+  Icon: string;
+  GradeQuality: number | null;
+  AuctionInfo: AuctionInfo;
+  Options: AuctionItemOption[];
+}
+
+interface AuctionInfo {
+  StartPrice: number;
+  BuyPrice: number | null;
+  BidPrice: number;
+  EndDate: string;
+  BidCount: number;
+  BidStartPrice: number;
+  IsCompetitive: boolean;
+  TradeAllowCount: number;
+}
+
+interface AuctionItemOption {
+  Type: AuctionItemOptionType;
+  OptionName: string;
+  OptionNameTripod: string;
+  Value: number;
+  IsPenalty: boolean;
+  ClassName: string;
+}
+
+type AuctionItemOptionType =
+  | "None"
+  | "SKILL"
+  | "STAT"
+  | "ABILITY_ENGRAVE"
+  | "BRACELET_SPECIAL_EFFECTS"
+  | "GEM_SKILL_COOLDOWN_REDUCTION"
+  | "GEM_SKILL_COOLDOWN_REDUCTION_IDENTITY"
+  | "GEM_SKILL_DAMAGE"
+  | "GEM_SKILL_DAMAGE_IDENTITY"
+  | "BRACELET_RANDOM_SLOT";
