@@ -549,3 +549,55 @@ interface MarketItem {
   RecentPrice: number;
   CurrentMinPrice: number;
 }
+
+// GameContents
+
+interface ChallengeAbyssDungeons {
+  Name: string;
+  Description: string;
+  MinCharacterLevel: number;
+  MinItemLevel: number;
+  AreaName: string;
+  StartTime: string;
+  EndTime: string;
+  Image: string;
+  RewardItems: RewardItem[];
+}
+
+interface RewardItem {
+  Name: string;
+  Icon: string;
+  Grade: string;
+  StartTimes: string[] | null; // 이건 어디에 쓰이는 것인지 조사 필요
+}
+
+interface ChallengeGuardianRaids {
+  Raids: Raid[];
+  RewardItems: RaidRewardItem[]; // 어비스 던전과 달리 레벨 구간대별로 보상이 다름 + 1580 구간대 반영이 안 되어 있음
+}
+
+interface Raid {
+  Name: string;
+  Description: string;
+  MinCharacterLevel: number;
+  MinItemLevel: number;
+  RequiredClearRaid: null;
+  StartTime: string;
+  EndTime: string;
+  Image: string;
+}
+
+interface RaidRewardItem {
+  ExpeditionItemLevel: number;
+  Items: RewardItem[];
+}
+
+interface Schedule {
+  CategoryName: string;
+  ContentsName: string;
+  ContentsIcon: string;
+  MinItemLevel: number;
+  StartTimes: string[];
+  Location: string;
+  RewardItems: RewardItem[];
+}
