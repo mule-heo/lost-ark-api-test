@@ -2,7 +2,7 @@ import { Button } from "shared/ui/button";
 import { Header as StyledHeader } from "./style";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { apiInstance } from "shared/api/axios/base";
+import { apiInstance } from "shared/api/axios";
 
 // TODO: 버튼과 API 키 입력 모달 연결하기
 
