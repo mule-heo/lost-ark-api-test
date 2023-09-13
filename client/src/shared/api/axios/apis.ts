@@ -1,28 +1,11 @@
 import { apiInstance } from "./base";
+import { addQueryParameters } from "shared/util";
 
-type Key<T> = { [K in keyof T]: T[K] };
-
-// TODO: 유틸 함수 별도 파일로 분리하기
-
-const addQueryParameters = (
-  url: string,
-  parameters: { [key: string]: string | number },
-) => {
-  let count = 0;
-  for (const key of Object.keys(parameters)) {
-    if (count === 0) {
-      url += `?${key}=${parameters[key]}`;
-    } else {
-      url += `&${key}=${parameters[key]}`;
-    }
-    count++;
-  }
-  return url;
-};
+type KeyValue<T> = { [K in keyof T]: T[K] };
 
 // News 카테고리
 
-export const getNotices = async (parameters: Key<NoticesReq>) => {
+export const getNotices = async (parameters: KeyValue<NoticesReq>) => {
   const url = addQueryParameters("/news/notices", parameters);
   return await apiInstance<Notice[]>(url)
     .then(res => res.data)
