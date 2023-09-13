@@ -91,7 +91,8 @@ interface Notice {
   Type: NoticeType;
 }
 
-interface Event {
+// 기존에 존재하는 Event와 이름이 겹치므로 Loa 접두어 추가
+interface LoaEvent {
   Title: string;
   Thumbnail: string;
   Link: string;
