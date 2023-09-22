@@ -1,6 +1,6 @@
 const getEnvVar = (key: string) => {
   if (process.env[key] === undefined) {
-    throw new Error(`Env variable for ${key} is undefined.`);
+    console.error(`Env variable for ${key} is undefined.`);
   }
   return process.env[key] || "";
 };
