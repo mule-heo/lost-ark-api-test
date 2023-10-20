@@ -1,14 +1,14 @@
 # 라카테스 - Lost Ark API Test
 
 <div align="center">
-  <img src="" alt="라카테스 로고 - 추가 예정"/>
+  <img src="" alt="로고"/>
 </div>
 
 <br>
 
 ## 배포 링크
 
-[라카테스 - 추가 예정](".")
+[라카테스](https://lakates.netlify.app/)
 
 <br>
 
@@ -110,16 +110,16 @@ react-query
 <img src="https://techstack-generator.vercel.app/react-icon.svg" alt="icon" width="65" height="65" />
 </td>
 <td align="center">
-<img src="https://github.com/mule-heo/lost-ark-api-test/assets/83588163/1062438a-5b94-4a32-93c9-55b4da07c1f2" alt="icon" width="65" height="65" />
+<img src="https://github.com/mule-heo/lost-ark-api-test/assets/83588163/030dc889-82ee-4ac4-8a89-c11b35a0b11a" alt="icon" width="65" height="65" />
 </td>
 <td align="center">
-<img src="https://github.com/mule-heo/lost-ark-api-test/assets/83588163/97f0eb0a-0cfe-47bd-870c-0df8f601de0b" alt="icon" color="white" width="65" height="65" />
+<img src="https://github.com/mule-heo/lost-ark-api-test/assets/83588163/b5086124-91d5-4406-9f40-bb40dc6a8914" alt="icon" color="white" width="65" height="65" />
 </td>
 <td align="center">
-<img src="https://github.com/mule-heo/lost-ark-api-test/assets/83588163/bebf624a-f47e-48ab-b7b1-43b1a362837c" alt="icon" color="white" width="65" height="65" />
+<img src="https://github.com/mule-heo/lost-ark-api-test/assets/83588163/a8ecbe50-7753-43cc-92e3-66b0ba2b979f" alt="icon" color="white" width="65" height="65" />
 </td>
 <td align="center">
-<img src="https://github.com/mule-heo/lost-ark-api-test/assets/83588163/49d687a4-dc84-40a9-930c-b86cd0938267" alt="icon" color="white" width="65" height="65" />
+<img src="https://github.com/mule-heo/lost-ark-api-test/assets/83588163/6ba40e0e-67fd-4873-936d-a8903ae2e036" alt="icon" color="white" width="65" height="65" />
 </td>
 </tr>
 </table>
