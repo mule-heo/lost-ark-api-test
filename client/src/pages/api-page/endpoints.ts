@@ -1,11 +1,20 @@
-interface Endpoint {
+export type Categories =
+  | "news"
+  | "characters"
+  | "armories"
+  | "auctions"
+  | "guilds"
+  | "markets"
+  | "gameContents";
+
+export interface Endpoint {
   method: "GET" | "POST";
   name: string;
   endpoint: string;
   description: string;
   parameters: Parameter[];
 }
-interface Parameter {
+export interface Parameter {
   name: string;
   description: string;
   required?: boolean;
