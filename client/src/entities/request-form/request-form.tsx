@@ -99,13 +99,16 @@ export const RequestForm = ({
           </tbody>
         </S.Table>
       ) : (
-        <p>No parameters</p>
+        <S.P>No parameters</S.P>
       )}
-      {isActive && (
-        <Button theme="darkGreen" size="small" onClick={() => requestFn()}>
-          Execute
-        </Button>
-      )}
+      <Button
+        className={isActive ? undefined : "hidden"}
+        theme="darkGreen"
+        size="small"
+        onClick={() => requestFn()}
+      >
+        Execute
+      </Button>
     </S.DivContainer>
   );
 };
