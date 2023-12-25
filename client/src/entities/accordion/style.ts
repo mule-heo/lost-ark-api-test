@@ -6,7 +6,6 @@ export const P = styled(PSmallMedium)`
   color: var(--bright-menu-color);
 `;
 export const DivContainer = styled.div`
-  margin: 100px 0px;
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
@@ -17,7 +16,6 @@ export const DivContainer = styled.div`
   }
   background-color: var(--background-sub-color);
   border-radius: 20px;
-  margin: 0px 30px;
 `;
 
 export const Summary = styled.summary`
