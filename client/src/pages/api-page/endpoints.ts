@@ -5,7 +5,7 @@ export type Categories =
   | "auctions"
   | "guilds"
   | "markets"
-  | "gameContents";
+  | "gamecontents";
 
 export interface Endpoint {
   method: "GET" | "POST";
@@ -345,5 +345,5 @@ export const endpoints = {
   auctions,
   guilds,
   markets,
-  gameContents,
+  gamecontents: gameContents,
 };
