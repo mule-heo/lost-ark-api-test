@@ -33,4 +33,5 @@ export const DivHidden = styled.div`
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease-in-out;
+  width: 100%;
 `;
