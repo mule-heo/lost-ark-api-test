@@ -23,6 +23,8 @@ export interface Parameter {
   availableValues?: (string | number)[];
 }
 
+export type ApiMetadata = Pick<Endpoint, "method" | "endpoint" | "description">;
+
 // News 카테고리 관련 정보
 const news: Endpoint[] = [
   {
