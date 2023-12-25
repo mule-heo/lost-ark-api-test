@@ -1,14 +1,14 @@
-import { fontStyle, FontStyle } from "shared/ui/typography";
+import { fontStyle, FontStyle, PSmallMedium } from "shared/ui/typography";
 import { styled } from "styled-components";
 
 export const DivContainer = styled.div`
-  margin: 100px 0px;
+  border-top: 1px var(--bright-menu-color) solid;
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
   align-items: flex-start;
   gap: 16px;
-  padding: 6px 20px;
+  padding: 20px 20px;
   width: 100%;
   & button:last-of-type {
     align-self: center;
@@ -49,4 +49,9 @@ export const Table = styled.table`
     color: var(--bright-menu-color);
     background-color: #1f2125;
   }
+`;
+
+export const P = styled(PSmallMedium)`
+  font-weight: 300;
+  color: var(--bright-menu-color);
 `;
