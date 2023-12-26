@@ -32,7 +32,6 @@ export const ApiPage = () => {
                 key={endpoint.name}
                 apiMetadata={apiMetadata}
                 requestKey={endpoint.name}
-                requestFn={() => console.log("hi")}
                 parameters={endpoint.parameters}
               />
             );

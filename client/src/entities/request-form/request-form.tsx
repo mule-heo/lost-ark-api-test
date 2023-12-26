@@ -6,11 +6,9 @@ import { Responses } from "entities/responses";
 
 export const RequestForm = ({
   requestKey,
-  requestFn,
   parameters,
 }: {
   requestKey: string;
-  requestFn: () => void;
   parameters: Parameter[];
 }) => {
   const [isActive, setIsActive] = useState(false);
@@ -109,7 +107,7 @@ export const RequestForm = ({
           className={isActive ? undefined : "hidden"}
           theme="darkGreen"
           size="small"
-          onClick={() => requestFn()}
+          onClick={() => {}}
         >
           Execute
         </Button>

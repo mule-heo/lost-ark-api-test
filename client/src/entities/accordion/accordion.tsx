@@ -7,7 +7,6 @@ import { ApiTag } from "shared/ui/apiTag";
 export const Accordion = (props: {
   apiMetadata: ApiMetadata;
   requestKey: string;
-  requestFn: () => void;
   parameters: Parameter[];
 }) => {
   const divRef = useRef<HTMLDivElement | null>(null);
