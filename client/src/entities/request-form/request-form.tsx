@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import * as S from "./style";
 import { Button } from "shared/ui/button";
 import { Parameter } from "pages/api-page/endpoints";
 import { Responses } from "entities/responses";
+import { createInitialState } from "features/request-form";
 
 export const RequestForm = ({
   requestKey,
@@ -13,6 +14,14 @@ export const RequestForm = ({
 }) => {
   const [isActive, setIsActive] = useState(false);
   const handleActive = () => setIsActive(!isActive);
+
+  const [formState, setFormState] = useState(createInitialState(parameters));
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
+    setFormState(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+  console.log(formState);
 
   return (
     <>
@@ -78,7 +87,12 @@ export const RequestForm = ({
 
                       {/* 사용 가능한 값이 제시되었다면 select, option 태그를 활용하여 input을 대체합니다. */}
                       {parameter.availableValues?.length ? (
-                        <select disabled={!isActive}>
+                        <select
+                          disabled={!isActive}
+                          name={parameter.name}
+                          onChange={handleChange}
+                          value={formState[parameter.name]}
+                        >
                           {parameter.availableValues.map(option => (
                             <option key={option} value={option}>
                               {option}
@@ -90,6 +104,9 @@ export const RequestForm = ({
                           type={
                             parameter.type === "number" ? "number" : "input"
                           }
+                          name={parameter.name}
+                          value={formState[parameter.name]}
+                          onChange={handleChange}
                           disabled={!isActive}
                           required={parameter.required}
                         />
@@ -107,7 +124,6 @@ export const RequestForm = ({
           className={isActive ? undefined : "hidden"}
           theme="darkGreen"
           size="small"
-          onClick={() => {}}
         >
           Execute
         </Button>
