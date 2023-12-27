@@ -20,7 +20,7 @@ export interface Parameter {
   required?: boolean;
   type: "string" | "number" | null;
   isQueryParameter?: boolean;
-  availableValues?: (string | number)[];
+  availableValues?: string[];
 }
 
 export type ApiMetadata = Pick<Endpoint, "method" | "endpoint" | "description">;
@@ -46,7 +46,7 @@ const news: Endpoint[] = [
         required: false,
         type: "string",
         isQueryParameter: true,
-        availableValues: ["공지", "점검", "상점", "이벤트"],
+        availableValues: ["--", "공지", "점검", "상점", "이벤트"],
       },
     ],
   },
