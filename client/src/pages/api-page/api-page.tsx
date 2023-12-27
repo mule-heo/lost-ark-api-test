@@ -35,7 +35,7 @@ export const ApiPage = () => {
               <Accordion
                 key={endpoint.name}
                 apiMetadata={apiMetadata}
-                requestKey={endpoint.name}
+                requestKey={endpoint.endpoint}
                 parameters={endpoint.parameters}
               />
             );
