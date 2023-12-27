@@ -2,6 +2,7 @@ import { Sidebar } from "shared/ui";
 import { useState } from "react";
 import { endpoints, Categories } from "./endpoints";
 import { Accordion } from "entities/accordion";
+import { useScroll } from "features/window";
 import * as S from "./style";
 
 export const ApiPage = () => {
@@ -12,6 +13,9 @@ export const ApiPage = () => {
       .replace("/", "")
       .toUpperCase() as Categories) || "NEWS",
   );
+
+  useScroll([currentCategory]);
+
   return (
     <>
       <Sidebar
