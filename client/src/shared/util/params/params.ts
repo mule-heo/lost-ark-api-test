@@ -4,12 +4,14 @@ export const addQueryParameters = (
 ) => {
   let count = 0;
   for (const key of Object.keys(parameters)) {
-    if (count === 0) {
-      url += `?${key}=${parameters[key]}`;
-    } else {
-      url += `&${key}=${parameters[key]}`;
+    if (parameters[key]) {
+      if (count === 0) {
+        url += `?${key}=${parameters[key]}`;
+      } else {
+        url += `&${key}=${parameters[key]}`;
+      }
+      count++;
     }
-    count++;
   }
   return url;
 };
