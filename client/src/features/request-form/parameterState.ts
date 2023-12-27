@@ -12,3 +12,17 @@ export const createInitialState = (parameters: Parameter[]) => {
   }
   return result;
 };
+
+export const createIsQueryParameterBitmask = (parameters: Parameter[]) => {
+  if (parameters.length > 31) {
+    throw new Error("Cannot use bitmask over 31 parameters.");
+  }
+  let result = 0;
+  for (let i = 0; i < parameters.length; i++) {
+    const parameter = parameters[i];
+    if (parameter.isQueryParameter) {
+      result |= 1 << i;
+    }
+  }
+  return result;
+};
