@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import { css, styled } from "styled-components";
 import { FontStyle } from "./models";
 
 export const fontStyle = {
@@ -51,3 +51,28 @@ export const fontStyle = {
 };
 
 export const getFontStyle = (style: FontStyle) => fontStyle[style];
+
+export const H1 = styled.h1`
+  ${fontStyle.heading1};
+`;
+export const H2 = styled.h2`
+  ${fontStyle.heading2};
+`;
+export const H3 = styled.h3`
+  ${fontStyle.heading2};
+`;
+export const H6 = styled.h6`
+  ${fontStyle.heading2};
+`;
+export const PLargeRegular = styled.p`
+  ${fontStyle.pLargeRegular};
+`;
+export const PLargeMedium = styled.p`
+  ${fontStyle.pLargeMedium};
+`;
+export const PSmallRegular = styled.p`
+  ${fontStyle.pSmallRegular};
+`;
+export const PSmallMedium = styled.p`
+  ${fontStyle.pSmallMedium};
+`;
