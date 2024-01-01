@@ -1,43 +1,94 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState, useEffect, useMemo, RefObject } from "react";
 import * as S from "./style";
 import { Button } from "shared/ui/button";
 import { Parameter } from "pages/api-page/endpoints";
 import { Responses } from "entities/responses";
-import { createInitialState } from "features/request-form";
+import { useQuery } from "react-query";
+import {
+  createInitialState,
+  createIsQueryParameterBitmask,
+} from "features/request-form";
+import { apiInstance } from "shared/api/axios";
+import { addQueryParameters, injectPathParameters } from "shared/util";
+import { resizeAccordion, useDidUpdateEffect } from "features/window";
+
+type StringObj = { [x: string]: string };
 
 export const RequestForm = ({
+  divRef,
+  method,
   requestKey,
   parameters,
 }: {
+  divRef: RefObject<HTMLDivElement>;
+  method: "GET" | "POST";
   requestKey: string;
   parameters: Parameter[];
 }) => {
   const [isActive, setIsActive] = useState(false);
   const handleActive = () => setIsActive(!isActive);
 
+  const [url, setUrl] = useState(
+    (process.env.REACT_APP_API_URL ?? "") + requestKey,
+  );
   const [formState, setFormState] = useState(createInitialState(parameters));
+  const isQueryParameterBitmask = useMemo(
+    () => createIsQueryParameterBitmask(parameters),
+    [parameters],
+  );
+
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     setFormState(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
-  console.log(formState);
+
+  useEffect(() => {
+    updateUrl();
+  }, [formState]);
+
+  const updateUrl = () => {
+    const queryParameters: StringObj = {};
+    const pathParameters: StringObj = {};
+
+    const parameters = Object.keys(formState);
+    for (let i = 0; i < parameters.length; i++) {
+      if (isQueryParameterBitmask & (1 << i)) {
+        queryParameters[parameters[i]] = formState[parameters[i]];
+      } else {
+        pathParameters[parameters[i]] = formState[parameters[i]];
+      }
+    }
+    let url = injectPathParameters(requestKey, pathParameters);
+    url = addQueryParameters(url, queryParameters);
+    setUrl((process.env.REACT_APP_API_URL ?? "") + url);
+  };
+
+  const handleSubmit = () => {
+    fetchData.refetch();
+  };
+
+  const fetchData = useQuery<string>({
+    queryKey: [requestKey],
+    queryFn: async () => {
+      if (method === "GET") {
+        const result = await apiInstance.get(url);
+        return JSON.stringify(result.data);
+      } else {
+        const result = await apiInstance.post(url);
+        return JSON.stringify(result.data);
+      }
+    },
+    enabled: false,
+  });
+
+  useDidUpdateEffect(resizeAccordion, divRef, [fetchData.data ?? ""]);
 
   return (
     <>
       <S.DivContainer>
         <S.HeadingRow>
           <S.Heading>Parameters</S.Heading>
-          {/* isActive = true일 때,
-        1. 요청 버튼 표시
-        2. 상단 메뉴에 Cancel 버튼 표시
-        3. input 요소 disabled 제거
-
-        isActive = false일 때,
-        1. 요청 버튼 숨기기
-        2. 상단 메뉴에 Try it out
-        3. input 요소 disabled 설정
-        */}
           {isActive ? (
             <Button
               theme="dark"
@@ -84,7 +135,6 @@ export const RequestForm = ({
                     </td>
                     <td>
                       <p>{parameter.description}</p>
-
                       {/* 사용 가능한 값이 제시되었다면 select, option 태그를 활용하여 input을 대체합니다. */}
                       {parameter.availableValues?.length ? (
                         <select
@@ -94,7 +144,10 @@ export const RequestForm = ({
                           value={formState[parameter.name]}
                         >
                           {parameter.availableValues.map(option => (
-                            <option key={option} value={option}>
+                            <option
+                              key={option}
+                              value={option === "--" ? "" : option}
+                            >
                               {option}
                             </option>
                           ))}
@@ -124,11 +177,12 @@ export const RequestForm = ({
           className={isActive ? undefined : "hidden"}
           theme="darkGreen"
           size="small"
+          onClick={handleSubmit}
         >
           Execute
         </Button>
       </S.DivContainer>
-      <Responses />
+      <Responses data={fetchData.data || ""} />
     </>
   );
 };
