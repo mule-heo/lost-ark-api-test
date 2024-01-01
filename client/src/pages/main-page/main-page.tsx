@@ -1,3 +1,5 @@
+import * as S from "./style";
+
 export const MainPage = () => {
-  return <main></main>;
+  return <S.Main></S.Main>;
 };
