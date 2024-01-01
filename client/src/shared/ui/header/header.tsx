@@ -1,5 +1,5 @@
 import { Button } from "shared/ui/button";
-import { Header as StyledHeader } from "./style";
+import { Header as StyledHeader, LogoImg } from "./style";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { apiInstance } from "shared/api/axios";
@@ -33,7 +33,7 @@ export const Header = () => {
   return (
     <StyledHeader>
       <Link to="/">
-        <img src="" alt="로고" />
+        <LogoImg src={process.env.PUBLIC_URL + "/assets/logo.jpg"} alt="로고" />
       </Link>
       <span>
         <Link to="/api">API 테스트</Link>

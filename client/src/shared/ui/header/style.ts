@@ -16,7 +16,7 @@ export const Header = styled.header`
   align-items: center;
 
   & > :first-child {
-    margin: 0 64px;
+    margin: 0 48px 0 64px;
   }
 
   & > :not(:first-child) {
@@ -48,5 +48,15 @@ export const Header = styled.header`
   & a {
     color: inherit;
     text-decoration: none;
+  }
+`;
+
+export const LogoImg = styled.img`
+  border-radius: 50%;
+  width: 50px;
+  filter: drop-shadow(0px 0px 3px white);
+
+  &:hover {
+    filter: drop-shadow(0px 1px 4px yellow) drop-shadow(-1px 0px 4px blue);
   }
 `;
