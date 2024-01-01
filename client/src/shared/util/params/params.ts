@@ -15,3 +15,14 @@ export const addQueryParameters = (
   }
   return url;
 };
+
+export const injectPathParameters = (
+  url: string,
+  parameters: { [key: string]: string | number },
+) => {
+  for (const key of Object.keys(parameters)) {
+    const regexp = new RegExp(`{${key}}`);
+    url = url.replace(regexp, `${parameters[key]}`);
+  }
+  return url;
+};
