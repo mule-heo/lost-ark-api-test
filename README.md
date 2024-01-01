@@ -1,7 +1,7 @@
 # 라카테스 - Lost Ark API Test
 
 <div align="center">
-  <img src="" alt="로고"/>
+  <img src="./client/public/assets/logo.jpg" alt="로고"/>
 </div>
 
 <br>
