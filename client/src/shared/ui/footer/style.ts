@@ -6,9 +6,6 @@ export const Footer = styled.footer`
   height: 50px;
   background-color: var(--area-dark-color);
 
-  position: sticky;
-  bottom: 0;
-
   display: flex;
   justify-content: flex-end;
   align-items: center;

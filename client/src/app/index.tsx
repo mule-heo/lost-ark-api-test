@@ -8,7 +8,7 @@ function Root() {
       <Header />
       <section
         style={{
-          minHeight: "calc(150vh - 125px)",
+          minHeight: "calc(100vh - 125px)",
           display: "flex",
           padding: "55px 60px 70px",
         }}
