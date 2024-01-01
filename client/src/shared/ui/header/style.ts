@@ -2,6 +2,8 @@ import { styled } from "styled-components";
 import { getFontStyle, FontStyle } from "../typography";
 
 export const Header = styled.header`
+  z-index: 2024;
+
   width: clamp(780px, 100%, 100vw);
   height: 75px;
   background-color: var(--area-dark-color);
