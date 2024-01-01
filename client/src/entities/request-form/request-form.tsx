@@ -73,10 +73,10 @@ export const RequestForm = ({
     queryFn: async () => {
       if (method === "GET") {
         const result = await apiInstance.get(url);
-        return JSON.stringify(result.data);
+        return JSON.stringify(result.data, null, 2);
       } else {
         const result = await apiInstance.post(url);
-        return JSON.stringify(result.data);
+        return JSON.stringify(result.data, null, 2);
       }
     },
     enabled: false,
