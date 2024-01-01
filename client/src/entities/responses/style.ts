@@ -45,9 +45,15 @@ export const Table = styled.table`
   & :is(th, td):first-of-type {
     width: 120px;
   }
-  & td {
+  & :is(td, pre) {
     color: var(--bright-menu-color);
     background-color: #1f2125;
+  }
+
+  pre {
+    max-height: 30vh;
+    white-space: pre-wrap;
+    overflow-y: scroll;
   }
 `;
 
