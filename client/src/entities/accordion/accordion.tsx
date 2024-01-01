@@ -3,6 +3,7 @@ import * as S from "./style";
 import { Parameter, ApiMetadata } from "pages/api-page/endpoints";
 import { RequestForm } from "entities/request-form";
 import { ApiTag } from "shared/ui/apiTag";
+import { Suspense } from "react";
 
 export const Accordion = (props: {
   apiMetadata: ApiMetadata;
@@ -32,7 +33,15 @@ export const Accordion = (props: {
         <S.P>{props.apiMetadata.description}</S.P>
       </S.Summary>
       <S.DivHidden ref={divRef}>
-        <RequestForm {...props} />
+        {/* TODO: 데이터 변경 div 번쩍이는 현상 해결하기 */}
+        <Suspense fallback={<div>suspense</div>}>
+          <RequestForm
+            divRef={divRef}
+            requestKey={props.requestKey}
+            parameters={props.parameters}
+            method={props.apiMetadata.method}
+          />
+        </Suspense>
       </S.DivHidden>
     </S.DivContainer>
   );
