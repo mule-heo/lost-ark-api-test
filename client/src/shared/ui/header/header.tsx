@@ -7,16 +7,7 @@ import { APIKeyContext } from "shared/context/api-key";
 // TODO: 버튼과 API 키 입력 모달 연결하기
 
 export const Header = () => {
-  const { APIKey, setAPIKey } = useContext(APIKeyContext);
-  const inputApiKey = () => {
-    const API_KEY = prompt("API 키를 입력하십시오.");
-    setAPIKey(API_KEY);
-  };
-  const deleteApiKey = () => {
-    setAPIKey(null);
-    alert("로그아웃합니다.");
-    localStorage.removeItem("API_KEY");
-  };
+  const { APIKey, inputAPIKey, deleteAPIKey } = useContext(APIKeyContext);
 
   return (
     <StyledHeader>
@@ -34,7 +25,7 @@ export const Header = () => {
       <Button
         theme="warning"
         size="medium"
-        onClick={APIKey ? deleteApiKey : inputApiKey}
+        onClick={APIKey ? deleteAPIKey : inputAPIKey}
       >
         {APIKey ? "로그아웃" : "API 키 입력"}
       </Button>
