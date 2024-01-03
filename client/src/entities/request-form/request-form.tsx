@@ -11,6 +11,8 @@ import {
 import { apiInstance } from "shared/api/axios";
 import { addQueryParameters, injectPathParameters } from "shared/util";
 import { resizeAccordion, useDidUpdateEffect } from "features/window";
+import { useContext } from "react";
+import { APIKeyContext } from "shared/context/api-key";
 
 type StringObj = { [x: string]: string };
 
@@ -27,6 +29,7 @@ export const RequestForm = ({
 }) => {
   const [isActive, setIsActive] = useState(false);
   const handleActive = () => setIsActive(!isActive);
+  const { APIKey, inputAPIKey } = useContext(APIKeyContext);
 
   const [url, setUrl] = useState(
     (process.env.REACT_APP_API_URL ?? "") + requestKey,
@@ -65,7 +68,11 @@ export const RequestForm = ({
   };
 
   const handleSubmit = () => {
-    fetchData.refetch();
+    if (APIKey) {
+      fetchData.refetch();
+    } else {
+      inputAPIKey();
+    }
   };
 
   const fetchData = useQuery<string>({
