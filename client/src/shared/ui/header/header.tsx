@@ -1,35 +1,14 @@
 import { Button } from "shared/ui/button";
 import { Header as StyledHeader, LogoImg } from "./style";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { apiInstance } from "shared/api/axios";
+import { useContext } from "react";
+import { APIKeyContext } from "shared/context/api-key";
 
 // TODO: 버튼과 API 키 입력 모달 연결하기
 
 export const Header = () => {
-  const [apiKey, setApiKey] = useState<string | null>(null);
-  const inputApiKey = () => {
-    const API_KEY = prompt("API 키를 입력하십시오.");
-    setApiKey(API_KEY);
-  };
-  const deleteApiKey = () => {
-    setApiKey(null);
-    alert("로그아웃합니다.");
-    localStorage.removeItem("API_KEY");
-  };
+  const { APIKey, inputAPIKey, deleteAPIKey } = useContext(APIKeyContext);
 
-  useEffect(() => {
-    const key = localStorage.getItem("API_KEY");
-    key && setApiKey(key);
-  });
-  useEffect(() => {
-    if (apiKey) {
-      localStorage.setItem("API_KEY", apiKey);
-      apiInstance.defaults.headers.common["authorization"] = `bearer ${apiKey}`;
-    } else {
-      apiInstance.defaults.headers.common["authorization"] = undefined;
-    }
-  }, [apiKey]);
   return (
     <StyledHeader>
       <Link to="/">
@@ -46,9 +25,9 @@ export const Header = () => {
       <Button
         theme="warning"
         size="medium"
-        onClick={apiKey ? deleteApiKey : inputApiKey}
+        onClick={APIKey ? deleteAPIKey : inputAPIKey}
       >
-        {apiKey ? "로그아웃" : "API 키 입력"}
+        {APIKey ? "로그아웃" : "API 키 입력"}
       </Button>
     </StyledHeader>
   );
