@@ -50,12 +50,6 @@ API의 소유권 및 모든 권한은 Smilegate RPG 사에 있습니다. 이 페
 
 <br>
 
-## 문서
-
-### [와이어프레임(Figma) - 지속적으로 업데이트 예정](https://www.figma.com/file/PJI2X3qNCd40go1vROfjvT/%EB%A1%9C%EC%8A%A4%ED%8A%B8%EC%95%84%ED%81%ACAPI%EC%8B%9C%EA%B0%81%ED%99%94?type=design&node-id=0%3A1&mode=design&t=LmzWxID6Gf2FnDDF-1)
-
-<br>
-
 ## 주요 기능
 
 - API 요청 본문 입력 폼 제공
