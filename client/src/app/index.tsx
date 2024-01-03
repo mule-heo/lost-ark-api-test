@@ -1,10 +1,11 @@
 import "./index.css";
+import { APIKeyProvider } from "shared/context/api-key";
 import { Outlet } from "react-router-dom";
 import { Header, Footer } from "shared/ui";
 
 function Root() {
   return (
-    <>
+    <APIKeyProvider>
       <Header />
       <section
         style={{
@@ -16,7 +17,7 @@ function Root() {
         <Outlet />
       </section>
       <Footer />
-    </>
+    </APIKeyProvider>
   );
 }
 
