@@ -39,6 +39,7 @@ export const RequestForm = ({
     () => createIsQueryParameterBitmask(parameters),
     [parameters],
   );
+  const [initialData, setInitialData] = useState("");
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
@@ -189,7 +190,10 @@ export const RequestForm = ({
           Execute
         </Button>
       </S.DivContainer>
-      <Responses data={fetchData.data || ""} />
+      <Responses
+        data={fetchData.data || initialData}
+        status={fetchData.status}
+      />
     </>
   );
 };
