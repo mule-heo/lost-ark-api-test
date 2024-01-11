@@ -13,6 +13,7 @@ import { addQueryParameters, injectPathParameters } from "shared/util";
 import { resizeAccordion, useDidUpdateEffect } from "features/window";
 import { useContext } from "react";
 import { APIKeyContext } from "shared/context/api-key";
+import { fetchDummy } from "features/request-form";
 
 type StringObj = { [x: string]: string };
 
@@ -39,6 +40,7 @@ export const RequestForm = ({
     () => createIsQueryParameterBitmask(parameters),
     [parameters],
   );
+  const [initialData, setInitialData] = useState("");
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
@@ -49,6 +51,12 @@ export const RequestForm = ({
   useEffect(() => {
     updateUrl();
   }, [formState]);
+
+  useEffect(() => {
+    fetchDummy(requestKey).then(data => {
+      setInitialData(JSON.stringify(data, null, 2));
+    });
+  }, []);
 
   const updateUrl = () => {
     const queryParameters: StringObj = {};
@@ -189,7 +197,10 @@ export const RequestForm = ({
           Execute
         </Button>
       </S.DivContainer>
-      <Responses data={fetchData.data || ""} />
+      <Responses
+        data={fetchData.data || initialData}
+        status={fetchData.status}
+      />
     </>
   );
 };

@@ -1,6 +1,12 @@
 import * as S from "./style";
 
-export const FetchResult = ({ data }: { data: string }) => {
+export const FetchResult = ({
+  data,
+  status,
+}: {
+  data: string;
+  status: string;
+}) => {
   if (!data) {
     return null;
   }
@@ -8,7 +14,7 @@ export const FetchResult = ({ data }: { data: string }) => {
     <S.Table>
       <thead>
         <tr>
-          <th>데이터</th>
+          <th>{status === "idle" && "샘플 "}데이터</th>
         </tr>
       </thead>
       <tbody>

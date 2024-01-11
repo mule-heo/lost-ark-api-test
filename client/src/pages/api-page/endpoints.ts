@@ -254,7 +254,7 @@ const auctions: Endpoint[] = [
   {
     method: "POST",
     name: "auctionItems",
-    endpoint: "/markets/items",
+    endpoint: "/auctions/items",
     description: "검색 옵션에 해당하는 경매장 아이템을 반환합니다.",
     parameters: [],
   },

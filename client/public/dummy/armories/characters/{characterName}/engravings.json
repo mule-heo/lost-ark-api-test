@@ -1,0 +1,30 @@
+{
+  "Engravings": null,
+  "Effects": [
+    {
+      "Icon": "https://cdn-lostark.game.onstove.com/efui_iconatlas/ability/ability_278.png",
+      "Name": "수라의 길 Lv. 3",
+      "Description": "기력 및 충격 에너지 총량이 30% 감소되며 X키로 호신투기 효과를 획득할 수 있다. 호신투기 사용 시 2초 간 피격 이상에 면역이 되고 최대 생명력의 40%에 해당하는 보호막을 획득하며 받는 피해가 20% 감소한다. 호신투기 사용 후 10초 간 투기흡수 상태에 들어가 호신투기를 사용 할 수 없다. 투지 에너지가 수라 에너지로 변경되어 기력 스킬 사용 후 충격 스킬을 사용하거나, 충격 스킬 사용 후 기력 스킬 사용 시 고정적으로 4% 획득한다. 전투 상태에 진입 시 투기효과를 획득하며 권왕태세가 수라 상태로 변경된다. 수라 상태 진입 시, 투기 효과가 수라결 효과로 변경되며 이동기 스킬이 변경되고 기본공격이 수라결 기본공격으로 변경된다. 수라결 기본공격은 치명타 적중률의 200% 만큼 피해량이 증가한다. 투기 및 수라결 효과 적용 시 각성기, 기본공격을 포함한 스킬 피해량이 25% 증가하며 이동속도가 15% 증가한다."
+    },
+    {
+      "Icon": "https://cdn-lostark.game.onstove.com/efui_iconatlas/buff/buff_210.png",
+      "Name": "돌격대장 Lv. 3",
+      "Description": "기본 이동 속도 증가량 % 의 45% 만큼 적에게 주는 피해량이 증가한다."
+    },
+    {
+      "Icon": "https://cdn-lostark.game.onstove.com/efui_iconatlas/buff/buff_71.png",
+      "Name": "원한 Lv. 3",
+      "Description": "보스 등급 이상 몬스터에게 주는 피해가 20% 증가하지만, 받는 피해가 20% 증가한다."
+    },
+    {
+      "Icon": "https://cdn-lostark.game.onstove.com/efui_iconatlas/ability/ability_224.png",
+      "Name": "결투의 대가 Lv. 3",
+      "Description": "헤드어택 성공 시 피해량이 추가로 25% 증가한다."
+    },
+    {
+      "Icon": "https://cdn-lostark.game.onstove.com/efui_iconatlas/ability/ability_235.png",
+      "Name": "아드레날린 Lv. 3",
+      "Description": "이동기 및 기본공격을 제외한 스킬 사용 시 6초 동안 공격력이 1% 증가하며 (최대 6중첩) 해당 효과가 최대 중첩 도달 시 치명타 적중률이 추가로 15% 증가한다. 해당 효과는 스킬 취소에 따른 재사용 대기시간 감소가 적용되는 경우, 스킬 종료 후 적용된다."
+    }
+  ]
+}

@@ -2,13 +2,19 @@ import * as S from "./style";
 import { responses } from "./model";
 import { FetchResult } from "./fetch-result";
 
-export const Responses = ({ data }: { data: string }) => {
+export const Responses = ({
+  data,
+  status,
+}: {
+  data: string;
+  status: string;
+}) => {
   return (
     <S.DivContainer>
       <S.HeadingRow>
         <S.Heading>Responses</S.Heading>
       </S.HeadingRow>
-      <FetchResult data={data} />
+      <FetchResult data={data} status={status} />
       <S.Table>
         <thead>
           <tr>
