@@ -54,6 +54,7 @@ export const Table = styled.table`
     max-height: 30vh;
     white-space: pre-wrap;
     overflow-y: scroll;
+    word-break: break-all;
   }
 `;
 
