@@ -7,5 +7,5 @@ export const Main = styled.main`
   top: 75px;
   left: 0;
   height: calc(100vh - 125px);
-  width: 100vw;
+  width: clamp(780px, 100%, 100vw);
 `;
